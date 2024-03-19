@@ -11,7 +11,6 @@ public class GunAmmo : MonoBehaviour
     public AudioSource[] reloadSounds;
 
     private int _loadedAmmo;
-    private int _loadedAmmoValue;
 
     public int loadedAmmo
     {
@@ -43,7 +42,7 @@ public class GunAmmo : MonoBehaviour
 
     private void OnGunSelected() => UpdateShootingLock();
 
-    private void UpdateShootingLock() => shooting.enabled = _loadedAmmoValue > 0;
+    private void UpdateShootingLock() => shooting.enabled = _loadedAmmo > 0;
 
     private void Update()
     {

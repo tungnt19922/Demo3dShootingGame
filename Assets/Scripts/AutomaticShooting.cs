@@ -43,17 +43,17 @@ public class AutomaticShooting : Shooting
     {
         //anim.Play("Shoot", layer: -1, normalizedTime: 0);
         shootSound.Play();
-        PerformRaycasting();
+        //PerformRaycasting();
         onShoot.Invoke();
     }
 
-    private void PerformRaycasting()
-    {
-        Ray aimingRay = new Ray(aimingCamera.transform.position, aimingCamera.transform.forward);
-        if (Physics.Raycast(aimingRay, out RaycastHit hitInfo, 1000f, layerMask))
-        {
-            Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
-            Instantiate(hitMarkerPrefab, hitInfo.point, effectRotation);
-        }
-    }
+    //private void PerformRaycasting()
+    //{
+    //    Ray aimingRay = new Ray(aimingCamera.transform.position, aimingCamera.transform.forward);
+    //    if (Physics.Raycast(aimingRay, out RaycastHit hitInfo, 1000f, layerMask))
+    //    {
+    //        Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
+    //        Instantiate(hitMarkerPrefab, hitInfo.point, effectRotation);
+    //    }
+    //}
 }
