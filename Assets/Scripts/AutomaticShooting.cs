@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AutomaticShooting : MonoBehaviour
+public class AutomaticShooting : Shooting
 {
     public Animator anim;
     public int rpm;
