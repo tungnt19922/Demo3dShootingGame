@@ -12,7 +12,6 @@ public class GrenadeBullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Instantiate(explosionPrefab, transform.position, transform.rotation);
-        Debug.Log("bum");
         Destroy(gameObject);
         BlowObjects();
     }
