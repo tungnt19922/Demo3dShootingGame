@@ -176,7 +176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoint: 5
-  anim: {fileID: 42660275}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   healthPoint: 0
 --- !u!114 &42660283
 MonoBehaviour:
@@ -229,6 +231,52 @@ MonoBehaviour:
   anim: {fileID: 42660275}
   agent: {fileID: 42660284}
   reachingRadius: 2
+  onDestinationReached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 42660286}
+        m_TargetAssemblyTypeName: ZombieAttack, Assembly-CSharp
+        m_MethodName: StartAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStartMoving:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 42660286}
+        m_TargetAssemblyTypeName: ZombieAttack, Assembly-CSharp
+        m_MethodName: StopAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _isMovingValue: 0
+--- !u!114 &42660286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42660274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbbe3f82a39e0424ab374f6f8f20098b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 42660275}
+  damage: 2
+  playerHealth: {fileID: 367596076}
 --- !u!1 &42730166
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +747,7 @@ GameObject:
   - component: {fileID: 367596072}
   - component: {fileID: 367596071}
   - component: {fileID: 367596075}
+  - component: {fileID: 367596076}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -787,6 +836,79 @@ MonoBehaviour:
   guns:
   - {fileID: 1000014182226826}
   - {fileID: 6076482939030831863}
+--- !u!114 &367596076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367596070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bbd5ea7ffdef4c47805d63a74bee1d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoint: 10
+  onDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 509109902}
+        m_TargetAssemblyTypeName: GameFlow, Assembly-CSharp
+        m_MethodName: OnPlayerDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  healthPoint: 0
+--- !u!1 &509109901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 509109903}
+  - component: {fileID: 509109902}
+  m_Layer: 0
+  m_Name: GameFlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &509109902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509109901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd962d05be57f944e859d2b3f3ed7148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &509109903
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509109901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1055918, y: 1.1331785, z: -0.03898623}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &542950877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,8 +1160,8 @@ Transform:
   m_Children:
   - {fileID: 299755162}
   - {fileID: 1037562044}
-  - {fileID: 1323359094}
   - {fileID: 784528776}
+  - {fileID: 1323359094}
   - {fileID: 631656897}
   m_Father: {fileID: 1322371641}
   m_RootOrder: 0
@@ -1728,6 +1850,10 @@ PrefabInstance:
     - target: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
       propertyPath: m_Name
       value: Zombie1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389507112651452681, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
