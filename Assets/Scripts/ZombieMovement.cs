@@ -14,6 +14,7 @@ public class ZombieMovement : MonoBehaviour
     public float reachingRadius;
     public UnityEvent onDestinationReached;
     public UnityEvent onStartMoving;
+    public Health zombieHealth;
 
     public bool _isMovingValue;
     public bool IsMoving
@@ -29,36 +30,38 @@ public class ZombieMovement : MonoBehaviour
 
     private void OnIsMovingValueChanged()
     {
-        agent.isStopped = !_isMovingValue;
-        anim.SetBool("isWalking", _isMovingValue);
-        if (_isMovingValue )
+        if(zombieHealth.healthPoint >= 0)
         {
-            onStartMoving.Invoke(); 
+            agent.isStopped = !_isMovingValue;
+            anim.SetBool("isWalking", _isMovingValue);
+            if (_isMovingValue)
+            {
+                onStartMoving.Invoke();
+            }
+            else
+            {
+                onDestinationReached.Invoke();
+            }
         }
-        else
-        {
-            onDestinationReached.Invoke();
-        }
+    }
+
+    private void Start()
+    {
+        zombieHealth = GetComponent<Health>();
     }
 
     private void Update()
     {
+        ChasingCharacter();
+    }
+
+    private void ChasingCharacter()
+    {
         float distance = Vector3.Distance(transform.position, playerFoot.position);
         IsMoving = distance > reachingRadius;
-        if ( IsMoving )
+        if (IsMoving)
         {
             agent.SetDestination(playerFoot.position);
         }
-        //if (distance > reachingRadius)
-        //{
-        //    agent.isStopped = false;
-        //    agent.SetDestination(playerFoot.position);
-        //    anim.SetBool("IsWalking", true);
-        //}
-        //else
-        //{
-        //    agent.isStopped = true;
-        //    anim.SetBool("IsWalking", false);
-        //}
     }
 }
